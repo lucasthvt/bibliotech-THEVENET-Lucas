@@ -54,6 +54,11 @@
                             <i class="fas fa-info-circle"></i> À propos
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">
+                            <i class="fas fa-phone"></i> Contact
+                        </a>
+                    </li>
                 </ul>
 
                 <form class="d-flex" action="{{ route('livres.search') }}" method="GET" role="search">

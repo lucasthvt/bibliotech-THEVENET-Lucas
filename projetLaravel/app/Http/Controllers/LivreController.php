@@ -14,7 +14,7 @@ class LivreController extends Controller
      */
     public function index(): View
     {
-        $livres = Livre::with('categorie')->orderBy('titre')->get();
+        $livres = Livre::with(['categorie', 'auteur'])->orderBy('titre')->get();
 
         return view('livres.index', [
             'livres' => $livres,
@@ -32,9 +32,9 @@ class LivreController extends Controller
      */
     public function show(int $id): View
     {
-        $livre = Livre::with('categorie')->findOrFail($id);
+        $livre = Livre::with(['categorie', 'auteur'])->findOrFail($id);
 
-        $livresAssocies = Livre::with('categorie')
+        $livresAssocies = Livre::with(['categorie', 'auteur'])
             ->where('categorie_id', $livre->categorie_id)
             ->whereKeyNot($livre->id)
             ->take(3)
@@ -53,7 +53,7 @@ class LivreController extends Controller
     {
         $query = trim((string) $request->query('q', ''));
 
-        $livres = Livre::with('categorie')
+        $livres = Livre::with(['categorie', 'auteur'])
             ->when($query !== '', fn ($builder) => $builder->recherche($query))
             ->orderBy('titre')
             ->get();

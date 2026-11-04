@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Auteur;
 use App\Models\Categorie;
 use App\Models\Livre;
 use Illuminate\Database\Seeder;
@@ -15,6 +16,15 @@ class LivreSeeder extends Seeder
     public function run(): void
     {
         $categorie = fn (string $slug) => Categorie::where('slug', $slug)->value('id');
+        $auteur = function (string $nomComplet) {
+            $morceaux = preg_split('/\s+/', trim($nomComplet));
+            $nom = array_pop($morceaux);
+            $prenom = implode(' ', $morceaux) ?: null;
+
+            return Auteur::firstOrCreate(
+                ['nom' => $nom, 'prenom' => $prenom],
+            )->id;
+        };
 
         $livres = [
             ['Les Misérables', 'Victor Hugo', 1862, 1200, 'roman', true, 'Un chef-d\'œuvre de la littérature française qui suit la vie de Jean Valjean.'],
@@ -39,12 +49,12 @@ class LivreSeeder extends Seeder
             ['Harry Potter à l\'école des sorciers', 'J.K. Rowling', 1997, 320, 'jeunesse', true, 'Un jeune sorcier découvre Poudlard.'],
         ];
 
-        foreach ($livres as $i => [$titre, $auteur, $annee, $pages, $slug, $disponible, $resume]) {
+        foreach ($livres as $i => [$titre, $nomAuteur, $annee, $pages, $slug, $disponible, $resume]) {
             Livre::updateOrCreate(
                 ['isbn' => sprintf('978-2-1234-%04d-%d', 5678 + $i, $i % 10)],
                 [
                     'titre' => $titre,
-                    'auteur' => $auteur,
+                    'auteur_id' => $auteur($nomAuteur),
                     'annee' => $annee,
                     'nb_pages' => $pages,
                     'resume' => $resume,

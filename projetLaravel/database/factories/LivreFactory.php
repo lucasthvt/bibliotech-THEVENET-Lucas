@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Auteur;
 use App\Models\Categorie;
 use App\Models\Livre;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -17,7 +18,7 @@ class LivreFactory extends Factory
     {
         return [
             'titre' => rtrim($this->faker->unique()->sentence(3), '.'),
-            'auteur' => $this->faker->name(),
+            'auteur_id' => Auteur::factory(),
             'annee' => $this->faker->numberBetween(1850, 2025),
             'nb_pages' => $this->faker->numberBetween(80, 900),
             'isbn' => $this->faker->unique()->isbn13(),

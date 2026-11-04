@@ -15,19 +15,19 @@
 ## 1️⃣ Routes, contrôleurs, vues
 - [ ] 🎓 Fiche [MVC et routage](cours/01-mvc-routage.md) + auto-évaluation
 - [ ] 🟢 1.1 Lire le trajet d'une requête (questions du guide)
-- [ ] 🟢 1.2 Page Contact
-- [ ] 🟡 1.3 Liste des catégories
-- [ ] 🟡 1.4 Les livres d'une catégorie
+- [x] 🟢 1.2 Page Contact
+- [x] 🟡 1.3 Liste des catégories
+- [x] 🟡 1.4 Les livres d'une catégorie
 - [ ] 🔴 1.5 Page 404 personnalisée
-- [ ] ✅ `--group=seance-01` vert
+- [x] ✅ `--group=seance-01` vert
 
 ## 2️⃣ Base de données & Eloquent
 - [ ] 🎓 Fiche [Migrations et relations](cours/02-eloquent-migrations.md) + auto-évaluation
-- [ ] 🟢 2.1 Table et modèle `Auteur`
-- [ ] 🟢 2.2 Remplacer la colonne `auteur` par `auteur_id` (reprise des données)
-- [ ] 🟡 2.3 Seeders et recherche par auteur
+- [x] 🟢 2.1 Table et modèle `Auteur`
+- [x] 🟢 2.2 Remplacer la colonne `auteur` par `auteur_id` (reprise des données)
+- [x] 🟡 2.3 Seeders et recherche par auteur
 - [ ] 🔴 2.4 Page d'un auteur
-- [ ] ✅ `--group=seance-02` vert
+- [x] ✅ `--group=seance-02` vert
 
 ## 3️⃣ Gestion : lister et ajouter
 - [ ] 🎓 Fiche [Contrôleurs resource et validation](cours/03-resource-validation.md) + auto-évaluation

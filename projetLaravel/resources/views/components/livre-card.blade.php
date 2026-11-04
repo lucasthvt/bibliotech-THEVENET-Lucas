@@ -8,7 +8,7 @@
 
     <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{ $livre->titre }}</h5>
-        <p class="card-text text-muted">{{ $livre->auteur }}</p>
+        <p class="card-text text-muted">{{ $livre->auteur?->nom_complet }}</p>
 
         @if ($livre->categorie)
             <span class="badge mb-2" style="background-color: {{ $livre->categorie->couleur }}; width: fit-content;">
