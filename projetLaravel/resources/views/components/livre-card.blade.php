@@ -8,7 +8,13 @@
 
     <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{ $livre->titre }}</h5>
-        <p class="card-text text-muted">{{ $livre->auteur?->nom_complet }}</p>
+        <p class="card-text text-muted">
+            @if ($livre->auteur)
+                <a href="{{ route('auteurs.show', $livre->auteur) }}" class="link-underline-opacity-0">
+                    {{ $livre->auteur->nom_complet }}
+                </a>
+            @endif
+        </p>
 
         @if ($livre->categorie)
             <span class="badge mb-2" style="background-color: {{ $livre->categorie->couleur }}; width: fit-content;">

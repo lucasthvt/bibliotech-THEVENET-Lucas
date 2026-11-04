@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LivreController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,9 @@ Route::get('/recherche', [LivreController::class, 'search'])->name('livres.searc
 // Catégories
 Route::get('/categories', [CategorieController::class, 'index'])->name('categories.index');
 Route::get('/categories/{slug}', [CategorieController::class, 'show'])->name('categories.show');
+
+// Auteurs
+Route::get('/auteurs/{auteur}', [AuteurController::class, 'show'])->name('auteurs.show');
 
 // Démonstration : paramètre optionnel dans l'URL (séance 1)
 Route::get('/demo/hello/{nom?}', function (string $nom = 'Étudiant') {
