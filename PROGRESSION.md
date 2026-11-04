@@ -18,7 +18,7 @@
 - [x] 🟢 1.2 Page Contact
 - [x] 🟡 1.3 Liste des catégories
 - [x] 🟡 1.4 Les livres d'une catégorie
-- [ ] 🔴 1.5 Page 404 personnalisée
+- [x] 🔴 1.5 Page 404 personnalisée
 - [x] ✅ `--group=seance-01` vert
 
 ## 2️⃣ Base de données & Eloquent
@@ -26,7 +26,7 @@
 - [x] 🟢 2.1 Table et modèle `Auteur`
 - [x] 🟢 2.2 Remplacer la colonne `auteur` par `auteur_id` (reprise des données)
 - [x] 🟡 2.3 Seeders et recherche par auteur
-- [ ] 🔴 2.4 Page d'un auteur
+- [x] 🔴 2.4 Page d'un auteur
 - [x] ✅ `--group=seance-02` vert
 
 ## 3️⃣ Gestion : lister et ajouter
