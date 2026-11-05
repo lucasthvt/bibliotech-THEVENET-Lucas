@@ -16,6 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
         // On fait confiance à ses en-têtes X-Forwarded-* : les URL générées par
         // route() et url() restent en https:// et les formulaires ne sont pas bloqués.
         $middleware->trustProxies(at: '*');
+
+        $middleware->alias(['role' => \App\Http\Middleware\VerifierRole::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

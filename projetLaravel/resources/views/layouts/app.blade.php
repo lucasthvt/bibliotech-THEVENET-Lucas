@@ -66,13 +66,46 @@
                     </li>
                 </ul>
 
-                <form class="d-flex" action="{{ route('livres.search') }}" method="GET" role="search">
+                <form class="d-flex me-3" action="{{ route('livres.search') }}" method="GET" role="search">
                     <input class="form-control me-2" type="search" name="q" aria-label="Rechercher"
                            placeholder="Titre ou auteur…" value="{{ request('q') }}">
                     <button class="btn btn-outline-light" type="submit" aria-label="Lancer la recherche">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
+
+                <ul class="navbar-nav">
+                    @auth
+                        @if(auth()->user()->role !== 'adherent')
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('gestion.*') ? 'active' : '' }}" href="{{ route('gestion.livres.index') }}">
+                                    <i class="fas fa-cogs"></i> Gestion
+                                </a>
+                            </li>
+                        @endif
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> {{ auth()->user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">
+                                <i class="fas fa-sign-in-alt"></i> Connexion
+                            </a>
+                        </li>
+                    @endauth
+                </ul>
             </div>
         </div>
     </nav>

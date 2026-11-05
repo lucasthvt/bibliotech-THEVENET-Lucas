@@ -47,11 +47,11 @@
 ## 5️⃣ Authentification & rôles
 - [ ] ✍️ Interrogation écrite n° 1 (séances 1 à 4)
 - [ ] 🎓 Fiche [Authentification et autorisation](cours/05-authentification.md) + auto-évaluation
-- [ ] 🟢 5.1 Rôles, connexion, déconnexion
-- [ ] 🟢 5.2 Protéger l'espace de gestion
-- [ ] 🟡 5.3 Inscription d'un adhérent
-- [ ] 🟡 5.4 Durcir la connexion
-- [ ] ✅ `--group=seance-05` vert
+- [x] 🟢 5.1 Rôles, connexion, déconnexion
+- [x] 🟢 5.2 Protéger l'espace de gestion
+- [x] 🟡 5.3 Inscription d'un adhérent
+- [x] 🟡 5.4 Durcir la connexion
+- [x] ✅ `--group=seance-05` vert
 
 ## 6️⃣ Emprunts
 - [ ] 🎓 Fiche [Règles de gestion et transactions](cours/06-regles-transactions.md) + auto-évaluation

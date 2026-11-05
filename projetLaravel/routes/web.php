@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\Auth\ConnexionController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\Gestion;
@@ -18,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 // Accueil
 Route::get('/', [AccueilController::class, 'index'])->name('home');
+
+// Authentification
+Route::get('/connexion', [ConnexionController::class, 'create'])->middleware('guest')->name('login');
+Route::post('/connexion', [ConnexionController::class, 'store'])->middleware(['guest', 'throttle:5,1'])->name('login.store');
+Route::post('/deconnexion', [ConnexionController::class, 'destroy'])->middleware('auth')->name('logout');
+Route::get('/inscription', [RegisterController::class, 'create'])->middleware('guest')->name('register');
+Route::post('/inscription', [RegisterController::class, 'store'])->middleware('guest')->name('register.store');
 
 // Page statique : pas besoin de contrôleur
 Route::view('/about', 'about')->name('about');
@@ -41,9 +50,11 @@ Route::get('/demo/hello/{nom?}', function (string $nom = 'Étudiant') {
 })->name('demo.hello');
 
 // Espace de gestion (séance 3+)
-Route::prefix('gestion')->name('gestion.')->group(function () {
-    Route::resource('livres', Gestion\LivreController::class);
-    Route::resource('categories', Gestion\CategorieController::class)
-        ->except('show')
-        ->parameters(['categories' => 'categorie']);
-});
+Route::prefix('gestion')->name('gestion.')
+    ->middleware(['auth', 'role:bibliothecaire,admin'])
+    ->group(function () {
+        Route::resource('livres', Gestion\LivreController::class);
+        Route::resource('categories', Gestion\CategorieController::class)
+            ->except('show')
+            ->parameters(['categories' => 'categorie']);
+    });
