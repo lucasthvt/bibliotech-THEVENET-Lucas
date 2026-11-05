@@ -53,7 +53,7 @@
                     </dl>
 
                     <h2 class="h5">Résumé</h2>
-                    <p>{!! $livre->resume !!}</p>
+                    <p>{{ $livre->resume }}</p>
                 </div>
             </div>
         </div>

@@ -61,7 +61,7 @@
             @if ($livre->resume)
                 <div class="mb-3">
                     <label class="fw-bold">Résumé :</label>
-                    <p>{!! $livre->resume !!}</p>
+                    <p>{{ $livre->resume }}</p>
                 </div>
             @endif
         </div>

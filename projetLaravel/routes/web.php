@@ -5,8 +5,10 @@ use App\Http\Controllers\Auth\ConnexionController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\Gestion;
 use App\Http\Controllers\LivreController;
+use App\Http\Controllers\MesEmpruntsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,8 @@ Route::view('/contact', 'contact')->name('contact');
 Route::get('/livres', [LivreController::class, 'index'])->name('livres.index');
 Route::get('/livre/{id}', [LivreController::class, 'show'])->whereNumber('id')->name('livres.show');
 Route::get('/recherche', [LivreController::class, 'search'])->name('livres.search');
+Route::post('/livres/{livre}/emprunter', [EmpruntController::class, 'store'])
+    ->middleware('auth')->name('livres.emprunter');
 
 // Catégories
 Route::get('/categories', [CategorieController::class, 'index'])->name('categories.index');
@@ -43,6 +47,10 @@ Route::get('/categories/{slug}', [CategorieController::class, 'show'])->name('ca
 
 // Auteurs
 Route::get('/auteurs/{auteur}', [AuteurController::class, 'show'])->name('auteurs.show');
+
+// Mes emprunts (utilisateur connecté)
+Route::get('/mes-emprunts', [MesEmpruntsController::class, 'index'])
+    ->middleware('auth')->name('emprunts.mes');
 
 // Démonstration : paramètre optionnel dans l'URL (séance 1)
 Route::get('/demo/hello/{nom?}', function (string $nom = 'Étudiant') {
@@ -57,4 +65,8 @@ Route::prefix('gestion')->name('gestion.')
         Route::resource('categories', Gestion\CategorieController::class)
             ->except('show')
             ->parameters(['categories' => 'categorie']);
+        Route::post('/emprunts/{emprunt}/retour', [Gestion\EmpruntController::class, 'retour'])
+            ->name('emprunts.retour');
+        Route::get('/emprunts/retards', [Gestion\EmpruntController::class, 'retards'])
+            ->name('emprunts.retards');
     });

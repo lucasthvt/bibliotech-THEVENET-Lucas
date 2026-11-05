@@ -51,6 +51,14 @@ class Livre extends Model
     }
 
     /**
+     * Les emprunts d'un livre (1 → N).
+     */
+    public function emprunts()
+    {
+        return $this->hasMany(Emprunt::class);
+    }
+
+    /**
      * Livres que l'on peut emprunter.
      */
     public function scopeDisponible(Builder $query): Builder
