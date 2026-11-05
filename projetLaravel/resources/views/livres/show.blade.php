@@ -29,6 +29,21 @@
                 </div>
 
                 <div class="card-body">
+                    @if ($livre->disponible)
+                        @auth
+                            <form action="{{ route('livres.emprunter', $livre) }}" method="POST" class="mb-3">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-download"></i> Emprunter ce livre
+                                </button>
+                            </form>
+                        @else
+                            <p class="alert alert-info mb-3">
+                                <a href="{{ route('login') }}">Connectez-vous</a> pour emprunter ce livre.
+                            </p>
+                        @endauth
+                    @endif
+
                     <dl class="row">
                         <dt class="col-sm-3"><i class="fas fa-user"></i> Auteur</dt>
                         <dd class="col-sm-9">

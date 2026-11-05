@@ -16,7 +16,7 @@ class ServiceEmprunt
     public function emprunter(User $adherent, Livre $livre): Emprunt
     {
         return DB::transaction(function () use ($adherent, $livre) {
-            $livre = $livre->lockForUpdate()->first();
+            $livre = Livre::where('id', $livre->id)->lockForUpdate()->first();
 
             if (!$livre->disponible) {
                 throw new EmpruntImpossible('Ce livre n\'est pas disponible.');

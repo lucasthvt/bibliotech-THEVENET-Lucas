@@ -55,12 +55,12 @@
 
 ## 6️⃣ Emprunts
 - [ ] 🎓 Fiche [Règles de gestion et transactions](cours/06-regles-transactions.md) + auto-évaluation
-- [ ] 🟢 6.1 Table, modèle, relations
-- [ ] 🟢 6.2 Emprunter un livre
-- [ ] 🟡 6.3 Règles de gestion
-- [ ] 🟡 6.4 Mes emprunts, retour d'un livre
-- [ ] 🔴 6.5 Page des retards
-- [ ] ✅ `--group=seance-06` vert
+- [x] 🟢 6.1 Table, modèle, relations
+- [x] 🟢 6.2 Emprunter un livre
+- [x] 🟡 6.3 Règles de gestion
+- [x] 🟡 6.4 Mes emprunts, retour d'un livre
+- [x] 🔴 6.5 Page des retards
+- [x] ✅ `--group=seance-06` vert
 
 ## 7️⃣ API REST
 - [ ] 🎓 Fiche [API REST](cours/07-api-rest.md) + auto-évaluation
