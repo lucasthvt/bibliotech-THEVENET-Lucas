@@ -13,7 +13,13 @@ class LivreController extends Controller
 {
     public function index(): View
     {
-        $livres = Livre::with(['auteur', 'categorie'])->orderBy('titre')->paginate(15);
+        $query = Livre::with(['auteur', 'categorie']);
+
+        if (request('categorie')) {
+            $query->where('categorie_id', request('categorie'));
+        }
+
+        $livres = $query->orderBy('titre')->paginate(15)->withQueryString();
 
         return view('gestion.livres.index', ['livres' => $livres]);
     }
@@ -21,6 +27,7 @@ class LivreController extends Controller
     public function create(): View
     {
         return view('gestion.livres.create', [
+            'livre' => new Livre(),
             'auteurs' => Auteur::orderBy('nom')->get(),
             'categories' => Categorie::orderBy('nom')->get(),
         ]);
@@ -42,27 +49,32 @@ class LivreController extends Controller
         return view('gestion.livres.show', ['livre' => $livre]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Livre $livre)
+    public function edit(Livre $livre): View
     {
-        //
+        return view('gestion.livres.edit', [
+            'livre' => $livre,
+            'auteurs' => Auteur::orderBy('nom')->get(),
+            'categories' => Categorie::orderBy('nom')->get(),
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Livre $livre)
+    public function update(LivreRequest $request, Livre $livre)
     {
-        //
+        $donnees = $request->validated();
+        $donnees['disponible'] = $request->boolean('disponible');
+
+        $livre->update($donnees);
+
+        return redirect()->route('gestion.livres.index')
+            ->with('success', "« {$livre->titre} » a été modifié.");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Livre $livre)
     {
-        //
+        $titre = $livre->titre;
+        $livre->delete();
+
+        return redirect()->route('gestion.livres.index')
+            ->with('success', "« {$titre} » a été supprimé.");
     }
 }

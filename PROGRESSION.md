@@ -38,11 +38,11 @@
 
 ## 4️⃣ Gestion : modifier, supprimer
 - [ ] 🎓 Fiche [Formulaires, verbes HTTP, CSRF](cours/04-formulaires-csrf.md) + auto-évaluation
-- [ ] 🟢 4.1 Modifier un livre
-- [ ] 🟢 4.2 Supprimer un livre
-- [ ] 🟡 4.3 Les catégories, en autonomie
-- [ ] 🔴 4.4 Filtres conservés dans la pagination
-- [ ] ✅ `--group=seance-04` vert
+- [x] 🟢 4.1 Modifier un livre
+- [x] 🟢 4.2 Supprimer un livre
+- [x] 🟡 4.3 Les catégories, en autonomie
+- [x] 🔴 4.4 Filtres conservés dans la pagination
+- [x] ✅ `--group=seance-04` vert
 
 ## 5️⃣ Authentification & rôles
 - [ ] ✍️ Interrogation écrite n° 1 (séances 1 à 4)

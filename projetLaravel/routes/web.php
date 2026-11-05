@@ -43,4 +43,7 @@ Route::get('/demo/hello/{nom?}', function (string $nom = 'Étudiant') {
 // Espace de gestion (séance 3+)
 Route::prefix('gestion')->name('gestion.')->group(function () {
     Route::resource('livres', Gestion\LivreController::class);
+    Route::resource('categories', Gestion\CategorieController::class)
+        ->except('show')
+        ->parameters(['categories' => 'categorie']);
 });

@@ -43,6 +43,17 @@
                             <a href="{{ route('gestion.livres.show', $livre) }}" class="btn btn-sm btn-info">
                                 <i class="fas fa-eye"></i>
                             </a>
+                            <a href="{{ route('gestion.livres.edit', $livre) }}" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form action="{{ route('gestion.livres.destroy', $livre) }}" method="POST" class="d-inline"
+                                  onsubmit="return confirm('Retirer ce livre du catalogue ?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @empty
