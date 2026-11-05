@@ -9,23 +9,17 @@ use Illuminate\View\View;
 
 class EmpruntController extends Controller
 {
-    public function __construct(private ServiceEmprunt $serviceEmprunt) {}
+    public function __construct(private ServiceEmprunt $service) {}
 
     public function retour(Emprunt $emprunt)
     {
-        $this->serviceEmprunt->rendre($emprunt);
-
-        return back()->with('success', 'Livre rendu avec succès!');
+        $this->service->retourner($emprunt);
+        return back()->with('success', 'Retour enregistré.');
     }
 
     public function retards(): View
     {
-        $emprunts = Emprunt::enCours()
-            ->where('retour_prevu_le', '<', today())
-            ->with(['user', 'livre'])
-            ->orderBy('retour_prevu_le')
-            ->get();
-
+        $emprunts = Emprunt::with(['user', 'livre'])->enRetard()->get();
         return view('gestion.emprunts.retards', ['emprunts' => $emprunts]);
     }
 }

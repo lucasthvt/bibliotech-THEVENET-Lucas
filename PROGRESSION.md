@@ -64,12 +64,12 @@
 
 ## 7️⃣ API REST
 - [ ] 🎓 Fiche [API REST](cours/07-api-rest.md) + auto-évaluation
-- [ ] 🟢 7.1 `GET /api/livres`
-- [ ] 🟢 7.2 `GET /api/livres/{livre}`
-- [ ] 🟡 7.3 Filtres
-- [ ] 🟡 7.4 Création protégée par jeton
-- [ ] 🔴 7.5 Obtenir un jeton
-- [ ] ✅ `--group=seance-07` vert
+- [x] 🟢 7.1 `GET /api/livres`
+- [x] 🟢 7.2 `GET /api/livres/{livre}`
+- [x] 🟡 7.3 Filtres
+- [x] 🟡 7.4 Création protégée par jeton
+- [x] 🔴 7.5 Obtenir un jeton
+- [x] ✅ `--group=seance-07` vert
 
 ## 8️⃣ Qualité, sécurité, mise en ligne
 - [ ] ✍️ Interrogation écrite n° 2 (séances 5 à 7)
