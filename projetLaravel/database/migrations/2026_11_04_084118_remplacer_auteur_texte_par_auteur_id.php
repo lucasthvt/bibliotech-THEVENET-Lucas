@@ -51,7 +51,7 @@ return new class extends Migration
         foreach ($livres as $livre) {
             $auteur = DB::table('auteurs')->find($livre->auteur_id);
             if ($auteur) {
-                $nomComplet = trim(($auteur->prenom ?? '') . ' ' . $auteur->nom);
+                $nomComplet = trim(($auteur->prenom ?? '').' '.$auteur->nom);
                 DB::table('livres')->where('id', $livre->id)->update(['auteur' => $nomComplet]);
             }
         }

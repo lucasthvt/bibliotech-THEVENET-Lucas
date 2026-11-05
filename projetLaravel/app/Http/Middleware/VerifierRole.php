@@ -10,7 +10,7 @@ class VerifierRole
 {
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
-        if (!in_array($request->user()?->role, $roles, true)) {
+        if (! in_array($request->user()?->role, $roles, true)) {
             abort(403, 'Accès réservé au personnel de la médiathèque.');
         }
 

@@ -20,7 +20,7 @@ class CategorieController extends Controller
 
     public function create(): View
     {
-        return view('gestion.categories.create', ['categorie' => new Categorie()]);
+        return view('gestion.categories.create', ['categorie' => new Categorie]);
     }
 
     public function store(CategorieRequest $request): RedirectResponse
@@ -31,7 +31,7 @@ class CategorieController extends Controller
         Categorie::create($donnees);
 
         return redirect()->route('gestion.categories.index')
-            ->with('success', "Catégorie créée.");
+            ->with('success', 'Catégorie créée.');
     }
 
     public function edit(Categorie $categorie): View
@@ -47,19 +47,19 @@ class CategorieController extends Controller
         $categorie->update($donnees);
 
         return redirect()->route('gestion.categories.index')
-            ->with('success', "Catégorie modifiée.");
+            ->with('success', 'Catégorie modifiée.');
     }
 
     public function destroy(Categorie $categorie): RedirectResponse
     {
         if ($categorie->livres()->exists()) {
             return redirect()->route('gestion.categories.index')
-                ->with('error', "Impossible de supprimer une catégorie qui contient des livres.");
+                ->with('error', 'Impossible de supprimer une catégorie qui contient des livres.');
         }
 
         $categorie->delete();
 
         return redirect()->route('gestion.categories.index')
-            ->with('success', "Catégorie supprimée.");
+            ->with('success', 'Catégorie supprimée.');
     }
 }

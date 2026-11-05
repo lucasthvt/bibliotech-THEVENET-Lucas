@@ -21,7 +21,7 @@ class ConnexionController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (!Auth::attempt($identifiants)) {
+        if (! Auth::attempt($identifiants)) {
             return back()->withErrors(['email' => 'Ces identifiants ne correspondent à aucun compte.'])
                 ->onlyInput('email');
         }

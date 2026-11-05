@@ -24,7 +24,7 @@ class ServiceEmprunt
 
             $empruntsEnCours = $adherent->emprunts()->enCours()->count();
             if ($empruntsEnCours >= self::MAX_EMPRUNTS) {
-                throw new EmpruntImpossible('Vous avez atteint le nombre maximum d\'emprunts.');
+                throw new EmpruntImpossible('Vous avez déjà ' . self::MAX_EMPRUNTS . ' emprunts en cours.');
             }
 
             $emprunt = $adherent->emprunts()->create([
@@ -39,11 +39,12 @@ class ServiceEmprunt
         });
     }
 
-    public function rendre(Emprunt $emprunt): void
+    public function retourner(Emprunt $emprunt): Emprunt
     {
-        DB::transaction(function () use ($emprunt) {
+        return DB::transaction(function () use ($emprunt) {
             $emprunt->update(['rendu_le' => today()]);
             $emprunt->livre->update(['disponible' => true]);
+            return $emprunt->fresh();
         });
     }
 }

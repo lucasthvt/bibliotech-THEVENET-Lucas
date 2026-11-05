@@ -9,15 +9,13 @@ use Illuminate\Http\Request;
 
 class EmpruntController extends Controller
 {
-    public function __construct(private ServiceEmprunt $serviceEmprunt)
-    {
-    }
+    public function __construct(private ServiceEmprunt $service) {}
 
     public function store(Request $request, Livre $livre)
     {
         try {
-            $this->serviceEmprunt->emprunter($request->user(), $livre);
-            return back()->with('success', 'Livre emprunté avec succès!');
+            $this->service->emprunter($request->user(), $livre);
+            return back()->with('success', 'Livre emprunté avec succès.');
         } catch (EmpruntImpossible $e) {
             return back()->with('error', $e->getMessage());
         }

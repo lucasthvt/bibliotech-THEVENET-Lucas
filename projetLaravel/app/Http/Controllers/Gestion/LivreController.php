@@ -27,7 +27,7 @@ class LivreController extends Controller
     public function create(): View
     {
         return view('gestion.livres.create', [
-            'livre' => new Livre(),
+            'livre' => new Livre,
             'auteurs' => Auteur::orderBy('nom')->get(),
             'categories' => Categorie::orderBy('nom')->get(),
         ]);

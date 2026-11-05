@@ -9,9 +9,7 @@ use Illuminate\View\View;
 
 class EmpruntController extends Controller
 {
-    public function __construct(private ServiceEmprunt $serviceEmprunt)
-    {
-    }
+    public function __construct(private ServiceEmprunt $serviceEmprunt) {}
 
     public function retour(Emprunt $emprunt)
     {

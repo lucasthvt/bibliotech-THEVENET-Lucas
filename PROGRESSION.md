@@ -74,12 +74,12 @@
 ## 8️⃣ Qualité, sécurité, mise en ligne
 - [ ] ✍️ Interrogation écrite n° 2 (séances 5 à 7)
 - [ ] 🎓 Fiche [Qualité et mise en production](cours/08-qualite-production.md) + auto-évaluation
-- [ ] 🟡 8.1 Audit : trouver et corriger la faille
-- [ ] 🟢 8.2 Écrire vos propres tests
-- [ ] 🟢 8.3 Style du code (Pint) au vert
+- [x] 🟡 8.1 Audit : trouver et corriger la faille
+- [x] 🟢 8.2 Écrire vos propres tests
+- [x] 🟢 8.3 Style du code (Pint) au vert
 - [ ] 🟡 8.4 Mise en ligne
 - [ ] 🟢 8.5 Fiche de réalisation E5
-- [ ] ✅ `--group=seance-08` vert, toutes les coches vertes dans **Actions**
+- [x] ✅ `--group=seance-08` vert, toutes les coches vertes dans **Actions**
 
 ---
 🎓 fiche + auto-évaluation · 🟢 guidé · 🟡 semi-guidé · 🔴 autonome · ✅ tests · ✍️ interrogation

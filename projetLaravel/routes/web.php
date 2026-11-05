@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\Auth\ConnexionController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\Gestion;
