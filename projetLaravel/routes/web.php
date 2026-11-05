@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\Gestion;
 use App\Http\Controllers\LivreController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +39,8 @@ Route::get('/auteurs/{auteur}', [AuteurController::class, 'show'])->name('auteur
 Route::get('/demo/hello/{nom?}', function (string $nom = 'Étudiant') {
     return view('demo.hello', ['nom' => $nom]);
 })->name('demo.hello');
+
+// Espace de gestion (séance 3+)
+Route::prefix('gestion')->name('gestion.')->group(function () {
+    Route::resource('livres', Gestion\LivreController::class);
+});
