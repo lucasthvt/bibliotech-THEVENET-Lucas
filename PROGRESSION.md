@@ -31,10 +31,10 @@
 
 ## 3️⃣ Gestion : lister et ajouter
 - [ ] 🎓 Fiche [Contrôleurs resource et validation](cours/03-resource-validation.md) + auto-évaluation
-- [ ] 🟢 3.1 Contrôleur *resource* et liste paginée
-- [ ] 🟢 3.2 Formulaire d'ajout validé
-- [ ] 🟡 3.3 Fiche de gestion et Form Request
-- [ ] ✅ `--group=seance-03` vert
+- [x] 🟢 3.1 Contrôleur *resource* et liste paginée
+- [x] 🟢 3.2 Formulaire d'ajout validé
+- [x] 🟡 3.3 Fiche de gestion et Form Request
+- [x] ✅ `--group=seance-03` vert
 
 ## 4️⃣ Gestion : modifier, supprimer
 - [ ] 🎓 Fiche [Formulaires, verbes HTTP, CSRF](cours/04-formulaires-csrf.md) + auto-évaluation
